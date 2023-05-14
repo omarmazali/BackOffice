@@ -3,19 +3,30 @@
 
     <!-- Section: Split screen -->
     <!-- <section class=""> -->
-  
-      <div class="container shadow mt-5 mx-sm-5 ">
+      <div class="d-flex flex-column justify-content-center my-5">
+        <!-- <h4>Ajouter un agent</h4> -->
+        <div class="container shadow-lg">
   
         <div class="main row">
           <div class=" section right col-lg-8" style="background-color:white;">
             <div class="row ms-2">
-              <h1 class="text-dark mt-5 fw-bold" style="--bs-text-opacity: .9;">Informations</h1>
-              <h1 class="text-dark fw-bold  " style="--bs-text-opacity: .9;">personnelles</h1>
-              <h6 class="text-dark mt-3" style="--bs-text-opacity: .6; ">Veuillez insérer vos informations de base pour
-              </h6>
-              <h6 class="text-dark" style="--bs-text-opacity: .6;">la création de votre compte</h6>
+              <h1 class="text-dark mt-5 fw-bold" style="--bs-text-opacity: .9;">Informations personnelles</h1>
+              <!-- <h1 class="text-dark fw-bold  " style="--bs-text-opacity: .9;">personnelles</h1> -->
+              <!-- <h6 class="text-dark mt-3" style="--bs-text-opacity: .6; ">Veuillez insérer vos informations de base pour</h6> -->
+              <!-- <h6 class="text-dark" style="--bs-text-opacity: .6;">la création de votre compte</h6> -->
             </div>
-            <div class="row mt-5 ms-5">
+            <div class="row mt-3 ms-md-3 p-3">
+              <div class="col-md-10 mb-3">
+                <label for="inputName" class="form-label">Agence</label>
+                <!-- <h5>Agence</h5> -->
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>selectionner une agence</option>
+                  <option value="Sidi Abbad - Marrakech">Sidi Abbad - Marrakech</option>
+                  <option value="Gheliz - Marrakech">Gheliz - Marrakech</option>
+                  <option value="Mhammid - Marrakech">Mhammid - Marrakech</option>
+                </select>
+                <!-- <input type="text" class="form-control" placeholder="Nom" id="inputName" aria-label="Nom"> -->
+              </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">Nom</label>
                 <input type="text" class="form-control" placeholder="Nom" id="inputName" aria-label="Nom">
@@ -55,12 +66,12 @@
                     <input class="form-control" list="numlistOptions" id="exampleDataList" placeholder="+000">
                     <datalist id="numlistOptions">
                       <option value="+212">
-                      <option value="+33">
+                        <option value="+33">
                       <option value="+49">
-                      <option value="+41">
+                        <option value="+41">
                       <option value="+351">
-                    </datalist>
-                  </div>
+                      </datalist>
+                    </div>
                   <div class="col-md-9 mb-3">
                     <input type="text" class="form-control" id="inputName" aria-label="Nom">
                   </div>
@@ -71,13 +82,13 @@
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="CIN">
                 <datalist id="datalistOptions">
                   <option value="CIN">
-                  <option value="Passeport">
-                </datalist>
-              </div>
+                    <option value="Passeport">
+                    </datalist>
+                  </div>
             </div>
           </div>
           <div class="section left col-lg-4" style="background-color:#CFCFCF;">
-            <div class="row ms-5">
+            <div class="row ms-md-5">
               <h1 class="text-dark mt-5" style="--bs-text-opacity: .9;">Pièces jointes</h1>
               <div class="row g-3 mt-3">
                 <div class="col-md-9 mb-3">
@@ -96,15 +107,16 @@
               </div>
               <div class="col-md-1 ms-5">
                 <button type="submit" class="btn btn-primary"
-                  style="background-color: #42505C; color: white;">Annuler</button>
+                style="background-color: #42505C; color: white;">Annuler</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
-    <!-- </section> -->
-    <!-- Section: Split screen -->
-  
+      
+    </div>
+      <!-- </section> -->
+      <!-- Section: Split screen -->
+      
   <!-- </header> -->
   <!--Main Navigation-->
