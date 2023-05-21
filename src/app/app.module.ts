@@ -6,11 +6,13 @@ import { CreationFormComponent } from './creation-form/creation-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     CreationFormComponent,
-    LoginPageComponent
+    LoginPageComponent,
+
   ],
   imports: [
     BrowserModule,
