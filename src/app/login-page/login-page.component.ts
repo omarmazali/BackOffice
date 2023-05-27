@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit{
 
   constructor(public router:Router, private authService:AuthService){}
   form:LoginBody = {
-    tel: "",
+    username: "",
     password:""
   }
 

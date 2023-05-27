@@ -1,4 +1,4 @@
 export interface LoginBody{
-    tel:string,
+    username:string,
     password:string
 }
