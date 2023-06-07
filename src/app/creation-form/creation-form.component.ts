@@ -40,6 +40,7 @@ export class CreationFormComponent implements OnInit{
     identityNumber:"",
     birthday:"",
     address:"",
+    email:"",
     tel:"",
     password:"default",
     immatriculation:"",
@@ -90,8 +91,13 @@ export class CreationFormComponent implements OnInit{
       return
     }
     const phoneRegex = /^0\d{9}$/
+    const emailRegex= /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
     if(!phoneRegex.test(this.form.tel)){
       this.toastrService.warning("Format de numéro de téléphone n'est pas valide")
+      return
+    }
+    if(!emailRegex.test(this.form.email)){
+      this.toastrService.warning("Email invalide")
       return
     }
     this.uploadFile().subscribe(
@@ -115,6 +121,7 @@ export class CreationFormComponent implements OnInit{
                   identityNumber:"",
                   birthday:"",
                   address:"",
+                  email:"",
                   tel:"",
                   password:"default",
                   immatriculation:"",

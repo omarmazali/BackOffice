@@ -18,6 +18,10 @@ export class ApiService {
     })
   }
   registerAgent(body:AgentRegisterBody){
-    return this.http.post("http://localhost:8090/agent/auth/register",body)
+    return this.http.post("http://localhost:8090/agent/auth/register",body,{
+      headers:{
+        "Authorization":"Bearer "+this.auth.getToken()
+      }
+    })
   }
 }

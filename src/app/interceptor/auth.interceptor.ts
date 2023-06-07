@@ -18,6 +18,10 @@ export class AuthInterceptor implements HttpInterceptor {
     
     
     return next.handle(request).pipe(catchError((err:HttpErrorResponse) => {
+      if(err && err.status===500 && err.error.message==="User not found"){
+        this.service.logout();
+        this.router.navigateByUrl("/")
+      }
       
       if(err && err.status === 401 ){
 

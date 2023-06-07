@@ -46,5 +46,6 @@ export class AuthService {
     localStorage.removeItem('token')
     localStorage.removeItem('refreshToken')
     console.log("logout successful");
+    this.router.navigateByUrl('/')
   }
 }

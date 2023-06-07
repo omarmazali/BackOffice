@@ -6,6 +6,7 @@ export interface AgentRegisterBody{
 	birthday:string,
 	address:string,
 	tel:string,
+	email:string,
     password:string,
 	immatriculation:string,
 	licenseNumber:string,
