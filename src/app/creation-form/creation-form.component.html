@@ -92,27 +92,24 @@
                   </div>
             </div>
           </div>
-          <div class="section left col-lg-4" style="background-color:#CFCFCF;">
+          <div class="section left col-lg-4 pb-4" style="background-color:#CFCFCF;">
             <div class="row ms-md-5">
               <h1 class="text-dark mt-5" style="--bs-text-opacity: .9;">Pièces jointes</h1>
               <div class="row g-3 mt-3">
                 <div class="col-md-9 mb-3">
                   <label for="formFile" class="form-label">Fichier</label>
-                  <input class="form-control" name="file" type="file" id="formFile" #fileInputRef style="background-color: #42505C; color: white;" [(ngModel)]="selectedFile">
+                  <input class="form-control" name="file" type="file" accept=".pdf" id="formFile" #fileInputRef style="background-color: #42505C; color: white;" [(ngModel)]="selectedFile">
                 </div>
                 <div class="col-md-9 mb-3">
                   <label for="Description" class="form-label">Description</label>
                   <textarea type="text" class="form-control" id="Description"></textarea>
                 </div>
-              </div>
-            </div>
-            <div class="button row g-3 mt-5 ms-5">
-              <div class="col-md-3 ms-5">
-                <button type="submit" (click)="submitRegister($event)"  class="btn" style="background-color: #42505C; color: white;">Enregistrer</button>
-              </div>
-              <div class="col-md-1 ms-5">
-                <button type="submit" (click)="logout()" class="btn btn-primary"
-                style="background-color: #42505C; color: white;">Deconnexion</button>
+                <div class="col-md-9">
+                  <button type="submit" (click)="submitRegister($event)"  class="btn" style="background-color: #42505C; color: white;">Enregistrer</button>
+                </div>
+                <div class="col-md-9 my-5 text-end">
+                  <button type="submit" (click)="logout()" class="btn btn-outline-danger">Deconnexion</button>
+                </div>
               </div>
             </div>
           </div>
