@@ -45,7 +45,7 @@ export class CreationFormComponent implements OnInit{
     immatriculation:"",
     licenseNumber:"",
     idFilePath:"path",
-    agencyId:0
+    agencyId:1
   }
 
   ngOnInit(): void {
@@ -61,6 +61,9 @@ export class CreationFormComponent implements OnInit{
     )
     }
 
+  handleSelect(){
+    console.log(this.form.agencyId);
+    }
   uploadFile():Observable<any>{
     const formData = new FormData()
     let files = this.getFile()
@@ -76,32 +79,78 @@ export class CreationFormComponent implements OnInit{
   submitRegister(event:any){
     
     console.log(this.form);
-    this.uploadFile().subscribe((data)=>{
-      console.log(data);
-      this.form.idFilePath = data.url
-      this.api.registerAgent(this.form).subscribe(
-        (data)=>{
-          
-          console.log(data)
-          if(data!= null && data.hasOwnProperty("token")){
-            
-            this.toastrService.success("Agent est ajouté!",'Succès',{
-              timeOut:2000,
-            })
-          }
-          else{
-            this.toastrService.error("Agent n'est pas ajouté",'Erreur survenue',{
-              timeOut:2000,
-            })
-          }
-          
-  
-        },
-        (err)=>{
-          console.log(err);
-        }
-        )
+    let valid=true;
+    Object.values(this.form).forEach((value)=>{
+      if(value==="" || value===0){
+        valid=false;
+      }
     })
+    if(!valid){
+      this.toastrService.warning("Veuillez remplir tous les champs et télécharger le document")
+      return
+    }
+    const phoneRegex = /^0\d{9}$/
+    if(!phoneRegex.test(this.form.tel)){
+      this.toastrService.warning("Format de numéro de téléphone n'est pas valide")
+      return
+    }
+    this.uploadFile().subscribe(
+      (data)=>{
+        console.log(data);
+        this.form.idFilePath = data.url
+        this.api.registerAgent(this.form).subscribe(
+          (data:any)=>{
+            
+            console.log(data)
+            
+            if(data!= null && data.hasOwnProperty("message")){
+              if(data.message==="Agent ajouté!"){
+                this.toastrService.success("Agent est ajouté!",'Succès',{
+                  timeOut:2000,
+                })
+                this.form={
+                  fname:"",
+                  lname:"",
+                  identityType:"",
+                  identityNumber:"",
+                  birthday:"",
+                  address:"",
+                  tel:"",
+                  password:"default",
+                  immatriculation:"",
+                  licenseNumber:"",
+                  idFilePath:"path",
+                  agencyId:0
+                }
+              }
+              else{
+                this.toastrService.error(data.message,'Erreur survenue',{
+                  timeOut:2000,
+                })
+              }
+              
+              
+              
+            }
+            else{
+              this.toastrService.error("Agent n'est pas ajouté",'Erreur survenue',{
+                timeOut:2000,
+              })
+            }
+            
+    
+          },
+          (err)=>{
+            console.log(err);
+          }
+          )
+    },
+    (err:any)=>{
+      this.toastrService.error("Erreur concernant le document ","Erreur",{
+        timeOut:2000,
+      })
+    }
+    )
     
   }
   logout(){

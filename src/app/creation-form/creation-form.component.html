@@ -21,8 +21,8 @@
               <div class="col-md-10 mb-3">
                 <label for="inputName" class="form-label">Agence</label>
                 <!-- <h5>Agence</h5> -->
-                <select class="form-select" name="agencyId" [(ngModel)]="form.agencyId" aria-label="Default select example">
-                  <option selected [ngValue]="0">selectionner une agence</option>
+                <select class="form-select" name="agencyId" (input)="handleSelect()" [(ngModel)]="form.agencyId" aria-label="Default select example">
+                  <option [selected]="" [ngValue]="0">Sélectionner une agence</option>
                   <option *ngFor="let agency of agencies" [ngValue]="agency.id">{{agency.name}}</option>
                 </select>
                 <!-- <input type="text" class="form-control" placeholder="Nom" id="inputName" aria-label="Nom"> -->
@@ -51,9 +51,9 @@
                 <label for="identityType" class="form-label">Type d'identité</label>
                 <select class="form-select" id="identityType" name="agencyId" [(ngModel)]="form.identityType" aria-label="Default select example">
                   <option selected value="">Selectionner...</option>
-                  <option selected value="CIN">CIN</option>
-                  <option selected value="passport">Passeport</option>
-                  <option selected value="permis">Permis de conduite</option>
+                  <option  value="CIN">CIN</option>
+                  <option  value="passport">Passeport</option>
+                  <option  value="permis">Permis de conduite</option>
                 </select>
               </div>
               <div class="col-md-5 mb-3">
