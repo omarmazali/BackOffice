@@ -1,32 +1,31 @@
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { JwtService } from './jwt/JwtService';
 import { LoginBody } from '../interfaces/LoginBody';
 import { LoginResponse } from '../interfaces/LoginResponse';
-import { Observable } from 'rxjs/internal/Observable';
+import { JwtService } from './jwt/JwtService';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private http: HttpClient, private jwtService: JwtService, private router: Router) { }
-  isLoggedIn = false;
-  isAutheticated() {
+  constructor(private http:HttpClient,private jwtService:JwtService,private router:Router) { }
+  isLoggedIn=false;
+  isAuthenticated(){
     let token = localStorage.getItem("token")
-    if (token === null) return false;
-    return true;
+    if(token===null) return false;
+    return true
   }
+  
 
-  login(form: LoginBody) {
-    this.http.post<LoginResponse>("http://localhost:8090/agent/client/authenticate",form).subscribe(
+  login(form:LoginBody){
+    this.http.post<LoginResponse>("http://localhost:8090/auth/authenticate",form).subscribe(
       (data) =>{
         console.log(data)
         localStorage.setItem("token",data.token)
-        localStorage.setItem("refreshToken", data.refreshToken)
-        //
-        this.router.navigateByUrl('/clients')
+        localStorage.setItem("refreshToken",data.refreshToken)
+        this.router.navigateByUrl('/create-agent')
         console.log(this.jwtService.decodeToken(data.token));
       } ,
         
@@ -40,7 +39,7 @@ export class AuthService {
 
   refreshLogin():Observable<HttpEvent<any>>{
     let refreshToken = localStorage.getItem('refreshToken')|| '';
-    return this.http.post<HttpEvent<any>>("http://localhost:8090/client/refresh",{token:refreshToken})
+    return this.http.post<HttpEvent<any>>("http://localhost:8090/auth/refresh",{token:refreshToken})
     
   }
 
@@ -62,6 +61,4 @@ export class AuthService {
     localStorage.removeItem('refreshToken')
     console.log("logout successful");
   }
-
-
 }

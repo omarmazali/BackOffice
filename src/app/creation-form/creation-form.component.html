@@ -2,7 +2,9 @@
 <!-- <header class="mb-10"> -->
 
     <!-- Section: Split screen -->
+    <div aria-live="polite" toastContainer></div>
     <!-- <section class=""> -->
+    <form #f="ngForm">
       <div class="d-flex flex-column justify-content-center my-5">
         <!-- <h4>Ajouter un agent</h4> -->
         <div class="container shadow-lg">
@@ -19,45 +21,48 @@
               <div class="col-md-10 mb-3">
                 <label for="inputName" class="form-label">Agence</label>
                 <!-- <h5>Agence</h5> -->
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>selectionner une agence</option>
-                  <option value="Sidi Abbad - Marrakech">Sidi Abbad - Marrakech</option>
-                  <option value="Gheliz - Marrakech">Gheliz - Marrakech</option>
-                  <option value="Mhammid - Marrakech">Mhammid - Marrakech</option>
+                <select class="form-select" name="agencyId" [(ngModel)]="form.agencyId" aria-label="Default select example">
+                  <option selected [ngValue]="0">selectionner une agence</option>
+                  <option *ngFor="let agency of agencies" [ngValue]="agency.id">{{agency.name}}</option>
                 </select>
                 <!-- <input type="text" class="form-control" placeholder="Nom" id="inputName" aria-label="Nom"> -->
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">Nom</label>
-                <input type="text" class="form-control" placeholder="Nom" id="inputName" aria-label="Nom">
+                <input type="text" name="lname" [(ngModel)]="form.lname"  class="form-control" placeholder="Nom" id="inputName" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputLastName" class="form-label">Prénom</label>
-                <input type="text" class="form-control" placeholder="Prénom" id="inputLastName" aria-label="Prénom">
+                <input type="text" name="fname" [(ngModel)]="form.fname" class="form-control" placeholder="Prénom" id="inputLastName" aria-label="Prénom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">Date de naissance</label>
-                <input type="text" class="form-control" placeholder="01/03/2002" id="inputName" aria-label="Nom">
+                <input type="text" name="date" [(ngModel)]="form.birthday" class="form-control" placeholder="01/03/2002" id="inputName" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputLastName" class="form-label">Adresse</label>
-                <input type="text" class="form-control" placeholder="N°11, rue 39" id="inputLastName" aria-label="Prénom">
+                <input type="text" name="address" [(ngModel)]="form.address" class="form-control" placeholder="N°11, rue 39" id="inputLastName" aria-label="Prénom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">Email</label>
-                <input type="text" class="form-control" id="inputName" aria-label="Nom">
+                <input type="text" name="email" class="form-control" id="inputName" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
-                <label for="inputLastName" class="form-label">Confirmation Email</label>
-                <input type="text" class="form-control" id="inputLastName" aria-label="Prénom">
+                <label for="identityType" class="form-label">Type d'identité</label>
+                <select class="form-select" id="identityType" name="agencyId" [(ngModel)]="form.identityType" aria-label="Default select example">
+                  <option selected value="">Selectionner...</option>
+                  <option selected value="CIN">CIN</option>
+                  <option selected value="passport">Passeport</option>
+                  <option selected value="permis">Permis de conduite</option>
+                </select>
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">N° de patente</label>
-                <input type="text" class="form-control" id="inputName" aria-label="Nom">
+                <input type="text" name="lisenceNumber" [(ngModel)]="form.licenseNumber" class="form-control" id="inputName" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputLastName" class="form-label">N° d’immatriculation au registre de commerce</label>
-                <input type="text" class="form-control" id="inputLastName" aria-label="Prénom">
+                <input type="text" name="immatriculation" [(ngModel)]="form.immatriculation" class="form-control" id="inputLastName" aria-label="Prénom">
               </div>
               <div class="col-md-5 mb-3">
                 <div class="row">
@@ -73,13 +78,13 @@
                       </datalist>
                     </div>
                   <div class="col-md-9 mb-3">
-                    <input type="text" class="form-control" id="inputName" aria-label="Nom">
+                    <input type="text" name="phone" [(ngModel)]="form.tel" class="form-control" id="inputName" aria-label="Nom">
                   </div>
                 </div>
               </div>
               <div class="col-md-5 mb-3">
-                <label for="inputLastName" class="form-label">Piece d'identite</label>
-                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="CIN">
+                <label for="inputLastName" class="form-label">Numéro d'identité</label>
+                <input class="form-control" name="identityNumber" [(ngModel)]="form.identityNumber" list="datalistOptions" id="exampleDataList" placeholder="">
                 <datalist id="datalistOptions">
                   <option value="CIN">
                     <option value="Passeport">
@@ -93,7 +98,7 @@
               <div class="row g-3 mt-3">
                 <div class="col-md-9 mb-3">
                   <label for="formFile" class="form-label">Fichier</label>
-                  <input class="form-control" type="file" id="formFile" style="background-color: #42505C; color: white;">
+                  <input class="form-control" name="file" type="file" id="formFile" #fileInputRef style="background-color: #42505C; color: white;" [(ngModel)]="selectedFile">
                 </div>
                 <div class="col-md-9 mb-3">
                   <label for="Description" class="form-label">Description</label>
@@ -103,11 +108,11 @@
             </div>
             <div class="button row g-3 mt-5 ms-5">
               <div class="col-md-3 ms-5">
-                <button type="submit" class="btn" style="background-color: #42505C; color: white;">Enregistrer</button>
+                <button type="submit" (click)="submitRegister($event)"  class="btn" style="background-color: #42505C; color: white;">Enregistrer</button>
               </div>
               <div class="col-md-1 ms-5">
-                <button type="submit" class="btn btn-primary"
-                style="background-color: #42505C; color: white;">Annuler</button>
+                <button type="submit" (click)="logout()" class="btn btn-primary"
+                style="background-color: #42505C; color: white;">Deconnexion</button>
               </div>
             </div>
           </div>
@@ -115,6 +120,8 @@
       </div>
       
     </div>
+
+    </form>
       <!-- </section> -->
       <!-- Section: Split screen -->
       
