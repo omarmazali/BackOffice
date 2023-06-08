@@ -94,23 +94,24 @@
               <div class="row g-3 mt-3">
                 <div class="col-md-9 mb-3">
                   <label for="formFile" class="form-label">Fichier</label>
-                  <input class="form-control" name="file" type="file" id="formFile" #fileInputRef style="background-color: #42505C; color: white;" [(ngModel)]="selectedFile">
+                  <input class="form-control" name="file" type="file" accept=".pdf" id="formFile" #fileInputRef style="background-color: #42505C; color: white;" [(ngModel)]="selectedFile">
                 </div>
                 <div class="col-md-9 mb-3">
                   <label for="Description" class="form-label">Description</label>
                   <textarea type="text" class="form-control" id="Description"></textarea>
                 </div>
               </div>
-            </div>
-            <div class="button d-flex justify-content-center gap-2 align-items-center flex-wrap  g-3 mt-5 mb-5">
-              <div class="">
+              <div class="col-md-9 mt-4 mb-5 d-flex justify-content-center gap-3">
                 <button type="submit" (click)="submitRegister($event)"  class="btn align-self-center" style="background-color: #42505C; color: white;">Enregistrer</button>
-              </div>
-              <div class="">
-                <button type="submit" (click)="logout()" class="btn btn-primary"
-                style="background-color: #42505C; color: white;">Deconnexion</button>
+                <button type="submit" (click)="logout()" class="btn btn-outline-danger" >Deconnexion</button>
               </div>
             </div>
+            <!-- <div class="button d-flex justify-content-center gap-2 align-items-center flex-wrap  g-3 mt-5 mb-5">
+              <div class="">
+              </div>
+              <div class="">
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
