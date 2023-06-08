@@ -37,15 +37,15 @@
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputName" class="form-label">Date de naissance</label>
-                <input type="text" name="date" [(ngModel)]="form.birthday" class="form-control" placeholder="01/03/2002" id="inputName" aria-label="Nom">
+                <input type="text" name="date" [(ngModel)]="form.birthday" class="form-control" placeholder="01-03-2002" id="inputName" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="inputLastName" class="form-label">Adresse</label>
                 <input type="text" name="address" [(ngModel)]="form.address" class="form-control" placeholder="N°11, rue 39" id="inputLastName" aria-label="Prénom">
               </div>
               <div class="col-md-5 mb-3">
-                <label for="inputName" class="form-label">Email</label>
-                <input type="text" name="email" [(ngModel)]="form.email" class="form-control" id="inputName" aria-label="Nom">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" [(ngModel)]="form.email" class="form-control" id="email" aria-label="Nom">
               </div>
               <div class="col-md-5 mb-3">
                 <label for="identityType" class="form-label">Type d'identité</label>
@@ -68,14 +68,14 @@
                 <div class="row">
                   <label for="inputName" class="form-label">Phone number</label>
                   <div class="col-md-3">
-                    <input class="form-control" list="numlistOptions" id="exampleDataList" placeholder="+000">
+                    <!--<input class="form-control" list="numlistOptions" id="exampleDataList" placeholder="+000">
                     <datalist id="numlistOptions">
                       <option value="+212">
                         <option value="+33">
                       <option value="+49">
                         <option value="+41">
                       <option value="+351">
-                      </datalist>
+                      </datalist>-->
                     </div>
                   <div class="col-md-9 mb-3">
                     <input type="text" name="phone" [(ngModel)]="form.tel" class="form-control" id="inputName" aria-label="Nom">
