@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   constructor(private http:HttpClient,private jwtService:JwtService,private router:Router) { }
-  url = "https://jabak-lah-backend.onrender.com";
+  url = "http://jabak-lah-backend.onrender.com";
   isLoggedIn = false;
   isAuthenticated(){
     let token = localStorage.getItem("token")

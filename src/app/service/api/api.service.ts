@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http:HttpClient,private auth:AuthService) {
   }
-  url= "https://jabak-lah-backend.onrender.com";
+  url= "http://jabak-lah-backend.onrender.com";
   getAgencies(){
     return this.http.get(this.url+"/agencies",{
       headers:{
