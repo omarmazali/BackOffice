@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import * as jwt_decode from 'jwt-decode';
-import { DecodedToken } from 'src/app/interfaces/DecodedToken';
+import { DecodedToken } from "src/app/interfaces/DecodedToken";
+
+
+
 
 @Injectable({
-  providedIn : "root"
+    providedIn: "root"
 }
 )
-export class JwtService {
+export class JwtService { 
 
-    constructor() {
-    }
+    constructor() { }
     decodeToken(token:string):DecodedToken {
       return jwt_decode.default(token);
     }
