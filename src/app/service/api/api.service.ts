@@ -10,15 +10,16 @@ export class ApiService {
 
   constructor(private http:HttpClient,private auth:AuthService) {
   }
+  url= "https://jabak-lah-backend.onrender.com";
   getAgencies(){
-    return this.http.get("http://localhost:8090/agencies",{
+    return this.http.get(this.url+"/agencies",{
       headers:{
         "Authorization":"Bearer "+this.auth.getToken()
       }
     })
   }
   registerAgent(body:AgentRegisterBody){
-    return this.http.post("http://localhost:8090/agent/auth/register",body,{
+    return this.http.post(this.url+"/agent/auth/register",body,{
       headers:{
         "Authorization":"Bearer "+this.auth.getToken()
       }

@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   constructor(private http:HttpClient,private jwtService:JwtService,private router:Router) { }
-  isLoggedIn=false;
+  url = "https://jabak-lah-backend.onrender.com";
+  isLoggedIn = false;
   isAuthenticated(){
     let token = localStorage.getItem("token")
     if(token===null) return false;
@@ -20,12 +21,12 @@ export class AuthService {
   
 
   login(form:LoginBody){
-    return this.http.post<LoginResponse>("http://localhost:8090/auth/authenticate",form)
+    return this.http.post<LoginResponse>(this.url+"/auth/authenticate",form)
   }
 
   refreshLogin():Observable<HttpEvent<any>>{
     let refreshToken = localStorage.getItem('refreshToken')|| '';
-    return this.http.post<HttpEvent<any>>("http://localhost:8090/auth/refresh",{token:refreshToken})
+    return this.http.post<HttpEvent<any>>(this.url+"/auth/refresh",{token:refreshToken})
     
   }
 
